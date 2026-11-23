@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --surface: #0d0c0b;
+  --surface-low: #171310;
+  --surface-high: #211c18;
+  --surface-highest: #2f2620;
+  --primary: #ff6436;
+  --primary-container: #bb3d22;
+  --on-primary: #fff6ec;
+  --tertiary: #ff774f;
+  --on-surface: #f4eee5;
+  --on-surface-variant: #ded2c5;
+  --on-surface-muted: #b8a898;
+  --rule: #4a3b31;
+  --control-border: #877464;
+  --type-display: Arial, Helvetica, sans-serif;
+  --type-body: system-ui, sans-serif;
+  --type-mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+  --font-manrope: var(--type-body);
+  --font-display: var(--type-display);
+  --font-mono: var(--type-mono);
+}
+
+@theme inline {
+  --color-surface:          var(--surface);
+  --color-surface-low:      var(--surface-low);
+  --color-surface-high:     var(--surface-high);
+  --color-surface-highest:  var(--surface-highest);
+  --color-primary:          var(--primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary:       var(--on-primary);
+  --color-tertiary:         var(--tertiary);
+  --color-on-surface:       var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-on-surface-muted: var(--on-surface-muted);
+  --font-sans:              var(--type-body);
+  --font-display:           var(--type-display);
+  --font-mono:              var(--type-mono);
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+
+::selection {
+  color: var(--surface);
+  background: var(--primary);
+}
+
+/* Chrome / Edge / Safari — autofill injects a yellow or blue bg.
+   Force our own surface color via an inset box-shadow (the only
+   reliable cross-browser override). */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px var(--surface-low) inset !important;
+  -webkit-text-fill-color: var(--on-surface) !important;
+  caret-color: var(--on-surface);
+  /* Delay the background transition so Chrome can't briefly flash its colour */
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--surface);
+  color: var(--on-surface-variant);
+  font-family: var(--type-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+[id] {
+  scroll-margin-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

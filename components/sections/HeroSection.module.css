@@ -1,0 +1,233 @@
+.hero {
+  --hero-paper: #f2f4ff;
+  --hero-ink: #141b3b;
+  --hero-accent: #3549d2;
+  --hero-rule: #c6cbe9;
+  border-bottom: 1px solid var(--hero-rule);
+  padding-top: 4rem;
+  background: var(--hero-paper);
+  color: var(--hero-ink);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 6.5rem);
+  max-width: 100rem;
+  min-height: min(42rem, calc(100svh - 4rem));
+  margin-inline: auto;
+  padding: clamp(4rem, 9vw, 8rem) clamp(1.25rem, 5vw, 5rem);
+}
+
+.identity {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.8rem;
+  color: #3c466f;
+  font: 600 0.8125rem/1.5 var(--font-mono);
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.identity span:first-child {
+  padding-right: 0.8rem;
+  border-right: 1px solid var(--hero-rule);
+  color: var(--hero-ink);
+}
+
+.title {
+  margin: 0.18em 0 0.23em -0.05em;
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 7.15vw, 8rem);
+  font-weight: 900;
+  line-height: 0.91;
+  letter-spacing: -0.06em;
+}
+
+.title span {
+  display: block;
+}
+
+.title span:last-child {
+  color: var(--hero-accent);
+}
+
+.intro {
+  max-width: 41ch;
+  color: #3c466f;
+  font-size: clamp(1rem, 1.35vw, 1.19rem);
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.75rem;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--hero-accent);
+  font-weight: 700;
+  transition: background 180ms, color 180ms;
+}
+
+.primary,
+.secondary:hover {
+  background: var(--hero-accent);
+  color: white;
+}
+
+.secondary,
+.primary:hover {
+  background: transparent;
+  color: var(--hero-accent);
+}
+
+.primary:focus-visible,
+.secondary:focus-visible {
+  outline-color: var(--hero-accent);
+}
+
+.trace {
+  overflow: hidden;
+  min-width: 0;
+  border: 1px solid #35436d;
+  border-radius: 0.5rem;
+  background: #121a34;
+  color: #e5eaff;
+  box-shadow: 0.65rem 0.65rem 0 #d9dfff;
+}
+
+.traceTitle,
+.topic {
+  font: 600 0.8125rem/1.4 var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.traceTitle {
+  padding: 1rem clamp(0.85rem, 2.4vw, 1.5rem);
+  border-bottom: 1px solid #35436d;
+}
+
+.map {
+  display: grid;
+  place-items: center;
+  min-height: clamp(11rem, 20vw, 18rem);
+  padding: 1.5rem clamp(0.7rem, 2.4vw, 1.5rem);
+  background:
+    radial-gradient(ellipse at center, #344c9a4d, transparent 72%),
+    linear-gradient(90deg, #9babed18 1px, transparent 1px),
+    linear-gradient(#9babed18 1px, transparent 1px);
+  background-size: 100% 100%, 1.25rem 1.25rem, 1.25rem 1.25rem;
+  background-position: center;
+}
+
+.nodes {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.nodes::before {
+  position: absolute;
+  z-index: -1;
+  top: 2rem;
+  inset-inline: calc(100% / 6);
+  height: 1px;
+  background: #8597d0;
+  content: "";
+}
+
+.node {
+  display: grid;
+  min-width: 0;
+  justify-items: center;
+  gap: 0.6rem;
+  padding-bottom: 0.35rem;
+  color: #dce5ff;
+  font: 600 clamp(0.7rem, 1vw, 0.85rem)/1.4 var(--font-mono);
+  cursor: pointer;
+}
+
+.nodeIcon {
+  display: grid;
+  width: clamp(2.9rem, 6vw, 4rem);
+  height: 4rem;
+  place-items: center;
+  border: 1px solid #8597d0;
+  border-radius: 0.3rem;
+  background: #182446;
+  color: #dce5ff;
+  transition: background 180ms, color 180ms;
+}
+
+.node:hover .nodeIcon,
+.node[aria-pressed="true"] .nodeIcon {
+  background: #b7c4ff;
+  color: #121a34;
+}
+
+.node:focus-visible {
+  outline-color: #b7c4ff;
+  outline-offset: 2px;
+}
+
+.readout {
+  display: grid;
+  align-content: start;
+  gap: 0.35rem;
+  min-height: 8rem;
+  padding: 1rem clamp(0.85rem, 2.4vw, 1.5rem);
+  border-top: 1px solid #35436d;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.topic {
+  color: #b7c4ff;
+}
+
+@media (max-width: 920px) {
+  .inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.25rem;
+    padding-block: clamp(2.75rem, 7vw, 4rem);
+  }
+
+  .title {
+    font-size: clamp(3.2rem, 10vw, 6.5rem);
+  }
+
+  .trace {
+    width: min(100%, 37rem);
+  }
+}
+
+@media (max-width: 400px) {
+  .identity {
+    font-size: 0.7rem;
+  }
+
+  .title {
+    font-size: clamp(2.65rem, 14vw, 3.35rem);
+  }
+
+  .primary,
+  .secondary {
+    padding-inline: 0.75rem;
+  }
+
+  .readout {
+    min-height: 9.75rem;
+  }
+}
